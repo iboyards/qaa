@@ -9,7 +9,7 @@ RSpec.describe AnswersController, type: :controller do
 
     context "with valid attributes" do
       it "saves a new answer into the database" do
-        expect { post :create, question_id: question, answer: attributes_for(:answer) }.to change(Answer, :count).by(1)
+        expect { post :create, question_id: question, answer: attributes_for(:answer) }.to change(question.answers, :count).by(1)
       end
       it 'renders new view' do
         post :create, question_id: question, answer: attributes_for(:answer)
@@ -18,7 +18,7 @@ RSpec.describe AnswersController, type: :controller do
     end 
     context "with invalid attributes" do
       it 'does not save the answer' do
-        expect { post :create, question_id: question, answer: attributes_for(:invalid_answer) }.to_not change(Answer, :count)
+        expect { post :create, question_id: question, answer: attributes_for(:invalid_answer) }.to_not change(question.answers, :count)
       end
       it 're-renders new view' do
         post :create, question_id: question, answer: attributes_for(:invalid_answer)
