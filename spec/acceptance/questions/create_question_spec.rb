@@ -14,4 +14,5 @@ feature 'New question', %q{
   click_on 'Create'
   expect(page).to have_content 'Question successfully created.'  
   end
+
 end
