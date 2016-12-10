@@ -2,4 +2,13 @@
 h2.title
   = @question.title
   .body
-  = @question.body
+  = @question.body 
+p = link_to 'Answer', new_question_answer_path(@question)
+
+
+.answers
+  = render @question.answers
+  
+  
+= render partial: 'answers/form', q: @question
+  

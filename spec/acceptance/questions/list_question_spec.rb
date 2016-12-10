@@ -8,8 +8,9 @@ feature 'List of questions', %q{
   scenario 'User can view a list of questions' do
     User.create!
     questions = FactoryGirl.create_list(:list_of_question,2)
-    visit questions_path    
-    expect(page).to have_content 'MyString1'  
-    expect(page).to have_content 'MyString2'  
+    visit questions_path 
+    questions.each do |question|  
+      expect(page).to have_content question.title  
+    end 
   end
 end
